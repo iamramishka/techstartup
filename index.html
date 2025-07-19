@@ -210,9 +210,14 @@
         }
 
         .section-transition {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.6s ease;
+        }
+
+        .section-transition:not(.visible) {
             opacity: 0;
             transform: translateY(20px);
-            transition: all 0.6s ease;
         }
 
         .section-transition.visible {
@@ -277,7 +282,14 @@
                         <a href="#services" class="nav-link hover:text-blue-700 transition font-medium">Services</a>
                         <a href="#technologies" class="nav-link hover:text-blue-700 transition font-medium">Technologies</a>
                         <a href="#industries" class="nav-link hover:text-blue-700 transition font-medium">Industries</a>
+                        <a href="#team" class="nav-link hover:text-blue-700 transition font-medium">Team</a>
                     </div>
+                    
+                    <!-- Mobile Menu Button -->
+                    <button class="md:hidden mr-4" id="mobile-menu-button">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                    
                     <label class="theme-switch">
                         <input type="checkbox" id="theme-toggle">
                         <span class="slider">
@@ -288,11 +300,22 @@
                     <a href="#contact" class="bg-blue-700 text-white px-6 py-2 rounded-full hover:bg-blue-800 transition font-medium hover:scale-105 transform duration-200 ml-6">Get Started</a>
                 </div>
             </div>
+            
+            <!-- Mobile Menu -->
+            <div class="hidden md:hidden" id="mobile-menu">
+                <div class="px-2 pt-2 pb-3 space-y-1 bg-white border-t">
+                    <a href="#services" class="block px-3 py-2 text-gray-700 hover:text-blue-700">Services</a>
+                    <a href="#technologies" class="block px-3 py-2 text-gray-700 hover:text-blue-700">Technologies</a>
+                    <a href="#industries" class="block px-3 py-2 text-gray-700 hover:text-blue-700">Industries</a>
+                    <a href="#team" class="block px-3 py-2 text-gray-700 hover:text-blue-700">Team</a>
+                    <a href="#contact" class="block px-3 py-2 text-gray-700 hover:text-blue-700">Contact</a>
+                </div>
+            </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="gradient-bg hero-pattern min-h-screen hero-section">
+    <section id="hero" class="gradient-bg hero-pattern min-h-screen hero-section".>
         <div class="hero-image-container">
             <img src="assets/images/hero/hero-image.jpg" alt="AI Technology and Innovation" class="hero-image active" loading="eager">
             <img src="assets/images/hero/2.jpg" alt="Machine Learning Solutions" class="hero-image" loading="lazy">
@@ -576,6 +599,57 @@
                     Meet the innovators behind ToposIQ's cutting-edge AI solutions
                 </p>
             </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Team Member 1 -->
+                <div class="bg-white p-8 rounded-xl shadow-lg text-center" data-aos="fade-up">
+                    <div class="w-24 h-24 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mx-auto mb-6 flex items-center justify-center text-white text-2xl font-bold">
+                        AI
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">AI Research Team</h3>
+                    <p class="text-gray-600 mb-4">Machine Learning Specialists</p>
+                    <p class="text-gray-700">Our dedicated AI researchers work on cutting-edge machine learning algorithms and neural networks.</p>
+                </div>
+                
+                <!-- Team Member 2 -->
+                <div class="bg-white p-8 rounded-xl shadow-lg text-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-24 h-24 bg-gradient-to-r from-green-500 to-teal-600 rounded-full mx-auto mb-6 flex items-center justify-center text-white text-2xl font-bold">
+                        CV
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Computer Vision Team</h3>
+                    <p class="text-gray-600 mb-4">Image Processing Experts</p>
+                    <p class="text-gray-700">Specialists in computer vision, image recognition, and visual analytics solutions.</p>
+                </div>
+                
+                <!-- Team Member 3 -->
+                <div class="bg-white p-8 rounded-xl shadow-lg text-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-24 h-24 bg-gradient-to-r from-purple-500 to-pink-600 rounded-full mx-auto mb-6 flex items-center justify-center text-white text-2xl font-bold">
+                        DA
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Data Analytics Team</h3>
+                    <p class="text-gray-600 mb-4">Data Science Experts</p>
+                    <p class="text-gray-700">Data scientists focused on extracting insights and building predictive models from complex datasets.</p>
+                </div>
+            </div>
+            
+            <!-- Team Stats -->
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+                <div class="bg-white p-6 rounded-xl shadow-lg" data-aos="fade-up">
+                    <h3 class="text-3xl font-bold text-blue-600 mb-2">10+</h3>
+                    <p class="text-gray-700 font-medium">AI Specialists</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="text-3xl font-bold text-green-600 mb-2">50+</h3>
+                    <p class="text-gray-700 font-medium">Projects Delivered</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="text-3xl font-bold text-purple-600 mb-2">5+</h3>
+                    <p class="text-gray-700 font-medium">Years Experience</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="300">
+                    <h3 class="text-3xl font-bold text-orange-600 mb-2">24/7</h3>
+                    <p class="text-gray-700 font-medium">Support Available</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -699,6 +773,30 @@
             });
         });
 
+        // Mobile menu functionality
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const button = this.querySelector('i');
+            
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('hidden');
+                button.className = 'fas fa-times text-xl';
+            } else {
+                mobileMenu.classList.add('hidden');
+                button.className = 'fas fa-bars text-xl';
+            }
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                const mobileMenu = document.getElementById('mobile-menu');
+                const button = document.querySelector('#mobile-menu-button i');
+                mobileMenu.classList.add('hidden');
+                button.className = 'fas fa-bars text-xl';
+            });
+        });
+
         // Dark mode functionality
         function initializeDarkMode() {
             const themeToggle = document.getElementById('theme-toggle');
@@ -767,8 +865,8 @@
         const navLinks = document.querySelectorAll('.nav-link');
 
         const observerOptions = {
-            threshold: 0.2,
-            rootMargin: '-20% 0px -79% 0px'
+            threshold: 0.1,
+            rootMargin: '0px 0px -50% 0px'
         };
 
         const sectionObserver = new IntersectionObserver((entries) => {
@@ -789,10 +887,30 @@
             });
         }, observerOptions);
 
-        // Observe all sections
+        // Observe all sections and make them visible by default after a delay
         sections.forEach(section => {
             section.classList.add('section-transition');
             sectionObserver.observe(section);
+        });
+
+        // Fallback: Make all sections visible after a short delay
+        setTimeout(() => {
+            sections.forEach(section => {
+                if (!section.classList.contains('visible')) {
+                    section.classList.add('visible');
+                }
+            });
+        }, 1000);
+
+        // Also make sections visible on page load if they're in viewport
+        window.addEventListener('load', () => {
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                const viewHeight = window.innerHeight;
+                if (rect.top < viewHeight && rect.bottom > 0) {
+                    section.classList.add('visible');
+                }
+            });
         });
 
         // Update active nav link on scroll
