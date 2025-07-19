@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToposIQ - Leading AI Solutions in Sri Lanka</title>
+    <meta name="description" content="ToposIQ - Comprehensive AI solutions from Sri Lanka. Transforming healthcare, finance, and retail through cutting-edge artificial intelligence technology.">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        :root {
+            --primary-bg: #ffffff;
+            --secondary-bg: #f9fafb;
+            --text-primary: #000000;
+            --text-secondary: #1f2937;
+            --accent-color: #3730a3;
+            --accent-light: #4f46e5;
+            --bg-white: #ffffff;
+            --bg-gray-50: #f9fafb;
+            --text-gray-800: #000000;
+            --text-gray-900: #000000;
+            --text-gray-700: #1f2937;
+            --text-gray-600: #374151;
+        }
+
+        [data-theme="dark"] {
+            --primary-bg: #111827;
+            --secondary-bg: #1f2937;
+            --text-primary: #f9fafb;
+            --text-secondary: #d1d5db;
+            --accent-color: #818cf8;
+            --accent-light: #6366f1;
+            --bg-white: #1f2937;
+            --bg-gray-50: #111827;
+            --text-gray-800: #f9fafb;
+            --text-gray-900: #f9fafb;
+            --text-gray-700: #d1d5db;
+            --text-gray-600: #9ca3af;
+        }
+
+        body {
+            background-color: var(--bg-gray-50);
+            color: var(--text-primary);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .theme-switch {
+            position: relative;
+            width: 60px;
+            height: 30px;
+            margin-left: 20px;
+        }
+
+        .theme-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 30px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 22px;
+            width: 22px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: var(--accent-color);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(30px);
+        }
+
+        .slider i {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 14px;
+            transition: .4s;
+        }
+
+        .sun-icon {
+            left: 8px;
+            color: #fff;
+            opacity: 1;
+        }
+
+        .moon-icon {
+            right: 8px;
+            color: #fff;
+            opacity: 0;
+        }
+
+        input:checked ~ .slider .sun-icon {
+            opacity: 0;
+        }
+
+        input:checked ~ .slider .moon-icon {
+            opacity: 1;
+        }
+
+        .bg-white {
+            background-color: var(--bg-white);
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .bg-gray-50 {
+            background-color: var(--bg-gray-50);
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .text-gray-800 {
+            color: var(--text-gray-800) !important;
+        }
+        .text-gray-900 {
+            color: var(--text-gray-900) !important;
+        }
+        .text-gray-700 {
+            color: var(--text-gray-700) !important;
+        }
+        .text-gray-600 {
+            color: var(--text-gray-600) !important;
+        }
+
+        [data-theme="dark"] .text-gray-800,
+        [data-theme="dark"] .text-gray-900 {
+            color: var(--text-primary);
+        }
+
+        [data-theme="dark"] .text-gray-600,
+        [data-theme="dark"] .text-gray-700 {
+            color: var(--text-secondary);
+        }
+
+        [data-theme="dark"] .bg-blue-50 {
+            background-color: rgba(59, 130, 246, 0.1);
+        }
+
+        [data-theme="dark"] .shadow-lg {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+        }
+        
+        [data-theme="dark"] .gradient-bg {
+            background: linear-gradient(135deg, #1a1c2e 0%, #2d3748 100%);
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+            color: var(--text-primary);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .section-transition {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .section-transition.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .active-nav-link {
+            color: #3730a3 !important;
+        }
+
+        .active-nav-link::after {
+            width: 100%;
+        }
+
+        .hero-section {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .hero-image.active {
+            opacity: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-image-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white bg-opacity-95 backdrop-blur-sm shadow-sm z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="#" class="logo text-2xl font-bold cursor-pointer">
+                    Topos<span>IQ</span>
+                </a>
+                <div class="flex items-center">
+                    <div class="hidden md:flex space-x-8">
+                        <a href="#services" class="nav-link hover:text-blue-700 transition font-medium">Services</a>
+                        <a href="#technologies" class="nav-link hover:text-blue-700 transition font-medium">Technologies</a>
+                        <a href="#industries" class="nav-link hover:text-blue-700 transition font-medium">Industries</a>
+                    </div>
+                    <label class="theme-switch">
+                        <input type="checkbox" id="theme-toggle">
+                        <span class="slider">
+                            <i class="fas fa-sun sun-icon"></i>
+                            <i class="fas fa-moon moon-icon"></i>
+                        </span>
+                    </label>
+                    <a href="#contact" class="bg-blue-700 text-white px-6 py-2 rounded-full hover:bg-blue-800 transition font-medium hover:scale-105 transform duration-200 ml-6">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg hero-pattern min-h-screen hero-section">
+        <div class="hero-image-container">
+            <img src="assets/images/hero/hero-image.jpg" alt="AI Technology Illustration" class="hero-image active">
+            <img src="assets/images/hero/2.jpg" alt="AI Technology Illustration" class="hero-image">
+            <img src="assets/images/hero/3.jpg" alt="AI Technology Illustration" class="hero-image">
+            <img src="assets/images/hero/4.jpg" alt="AI Technology Illustration" class="hero-image">
+            <img src="assets/images/hero/5.jpg" alt="AI Technology Illustration" class="hero-image">
+        </div>
+        <div class="hero-content flex items-center min-h-screen pt-20">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-1/2" data-aos="fade-right">
+                        <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">
+                            Empowering Sri Lanka's Digital Future
+                        </h1>
+                        <p class="text-white text-lg mb-8 font-medium">
+                            Transforming businesses through comprehensive AI solutions. From machine learning to computer vision, we're your partner in innovation.
+                        </p>
+                        <div class="flex space-x-4">
+                            <a href="#services" class="bg-white text-blue-600 px-8 py-3 rounded-full hover:bg-blue-50 transition">
+                                Our Services
+                            </a>
+                            <a href="#contact" class="border-2 border-white text-white px-8 py-3 rounded-full hover:bg-white hover:text-blue-600 transition">
+                                Contact Us
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl font-bold text-black mb-4 text-shadow" data-aos="fade-up">Our Services</h2>
+                <p class="text-black max-w-2xl mx-auto font-medium" data-aos="fade-up" data-aos-delay="100">
+                    Comprehensive AI solutions tailored for healthcare, finance, and retail industries
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service Cards -->
+                <div class="p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition" data-aos="fade-up">
+                    <img src="assets/images/services/a.jpg" alt="Machine Learning Solutions" class="w-full h-48 object-cover rounded-lg mb-6">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Machine Learning Solutions</h3>
+                    <p class="text-gray-700">Custom ML models for predictive analytics, pattern recognition, and automated decision-making.</p>
+                </div>
+                <div class="p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="100">
+                    <img src="assets/images/services/b.jpg" alt="Computer Vision" class="w-full h-48 object-cover rounded-lg mb-6">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Computer Vision</h3>
+                    <p class="text-gray-700">Advanced image and video analysis for object detection, facial recognition, and visual inspection.</p>
+                </div>
+                <div class="p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="200">
+                    <img src="assets/images/services/c.jpg" alt="Natural Language Processing" class="w-full h-48 object-cover rounded-lg mb-6">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Natural Language Processing</h3>
+                    <p class="text-gray-700">Text analysis, chatbots, and language understanding solutions for better customer engagement.</p>
+                </div>
+                <div class="p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="300">
+                    <img src="assets/images/services/d.jpg" alt="Data Analytics" class="w-full h-48 object-cover rounded-lg mb-6">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Data Analytics</h3>
+                    <p class="text-gray-700">Transform raw data into actionable insights with our advanced analytics solutions.</p>
+                </div>
+                <div class="p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="400">
+                    <img src="assets/images/services/e.jpg" alt="AI Consulting" class="w-full h-48 object-cover rounded-lg mb-6">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">AI Consulting</h3>
+                    <p class="text-gray-700">Expert guidance on AI strategy, implementation, and optimization for your business.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technologies Section -->
+    <section id="technologies" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4" data-aos="fade-up">Our Technologies</h2>
+                <p class="text-gray-700 max-w-2xl mx-auto font-medium" data-aos="fade-up" data-aos-delay="100">
+                    Cutting-edge tools and frameworks we use to deliver powerful AI solutions
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- AI/ML Technologies -->
+                <div class="bg-white p-8 rounded-xl shadow-lg" data-aos="fade-up">
+                    <div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-brain text-3xl text-blue-700"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">AI & Machine Learning</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            TensorFlow & PyTorch
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Scikit-learn
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            OpenCV & Computer Vision
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Natural Language Processing
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Data Technologies -->
+                <div class="bg-white p-8 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-database text-3xl text-blue-700"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Data Processing</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Apache Spark & Hadoop
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            PostgreSQL & MongoDB
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Data Warehousing
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Real-time Analytics
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Cloud & Infrastructure -->
+                <div class="bg-white p-8 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-cloud text-3xl text-blue-700"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Cloud & Infrastructure</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            AWS & Google Cloud
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Docker & Kubernetes
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            CI/CD Pipelines
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Microservices Architecture
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Development Tools -->
+                <div class="bg-white p-8 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-code text-3xl text-blue-700"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Development</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Python & Java
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            React & Node.js
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            RESTful APIs
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            GraphQL
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Security -->
+                <div class="bg-white p-8 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="400">
+                    <div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-shield-alt text-3xl text-blue-700"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Security & Compliance</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Data Encryption
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            OAuth & JWT
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            GDPR Compliance
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Security Auditing
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Analytics -->
+                <div class="bg-white p-8 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="500">
+                    <div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-chart-bar text-3xl text-blue-700"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Analytics & Reporting</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Business Intelligence
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Predictive Analytics
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Custom Dashboards
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Data Visualization
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industries Section -->
+    <section id="industries" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4" data-aos="fade-up">Industries We Serve</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+                    Delivering specialized AI solutions across key sectors
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Industry Cards -->
+                <!-- Healthcare -->
+                <div class="p-6 bg-white rounded-xl shadow-lg" data-aos="fade-up">
+                    <img src="assets/images/industries/a.jpg" alt="Healthcare Industry" class="w-full h-48 object-cover rounded-lg mb-6">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Healthcare</h3>
+                    <p class="text-gray-700">Enhancing patient care with AI-powered diagnostics and healthcare management solutions.</p>
+                </div>
+                <div class="p-6 bg-white rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="100">
+                    <img src="assets/images/industries/b.jpg" alt="Finance Industry" class="w-full h-48 object-cover rounded-lg mb-6">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Finance</h3>
+                    <p class="text-gray-700">Revolutionizing financial services with AI-driven risk assessment and fraud detection.</p>
+                </div>
+                <div class="p-6 bg-white rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="200">
+                    <img src="assets/images/industries/c.jpg" alt="Retail Industry" class="w-full h-48 object-cover rounded-lg mb-6">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Retail</h3>
+                    <p class="text-gray-700">Transforming shopping experiences with AI-powered inventory and customer analytics.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="py-20 bg-white relative">
+        <div class="absolute inset-0 z-0">
+            <img src="assets/images/team/team.jpg" alt="Team Background" class="w-full h-full object-cover opacity-10">
+        </div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4 text-shadow" data-aos="fade-up">Our Team</h2>
+                <p class="text-gray-700 max-w-2xl mx-auto font-medium" data-aos="fade-up" data-aos-delay="100">
+                    Meet the innovators behind ToposIQ's cutting-edge AI solutions
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-lg" data-aos="fade-right">
+                    <h3 class="text-2xl font-semibold mb-6">Contact Information</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-map-marker-alt text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Location</h4>
+                                <p class="text-gray-600">Morawaka, Sri Lanka</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-phone text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Phone</h4>
+                                <p class="text-gray-600">+94 78 43 24 261</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-envelope text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Email</h4>
+                                <p class="text-gray-600">support@toposiq.space</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-lg" data-aos="fade-left">
+                    <form id="contact-form" class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Name</label>
+                            <input type="text" name="name" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                            <input type="email" name="email" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                            <textarea name="message" required rows="4" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="logo text-2xl font-bold mb-4">
+                        Topos<span>IQ</span>
+                    </div>
+                    <p class="text-gray-400">Pioneering AI solutions in Sri Lanka</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Services</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>Machine Learning</li>
+                        <li>Computer Vision</li>
+                        <li>Natural Language Processing</li>
+                        <li>Data Analytics</li>
+                        <li>AI Consulting</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Industries</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>Healthcare</li>
+                        <li>Finance</li>
+                        <li>Retail</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>Morawaka, Sri Lanka</li>
+                        <li>+94 78 43 24 261</li>
+                        <li>support@toposiq.space</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 ToposIQ. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Logo click handler for home
+        document.querySelector('.logo').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Dark mode functionality
+        function initializeDarkMode() {
+            const themeToggle = document.getElementById('theme-toggle');
+            const html = document.documentElement;
+
+            function setDarkMode(isDark) {
+                if (isDark) {
+                    html.setAttribute('data-theme', 'dark');
+                    themeToggle.checked = true;
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    html.removeAttribute('data-theme');
+                    themeToggle.checked = false;
+                    localStorage.setItem('theme', 'light');
+                }
+            }
+
+            // Apply initial theme
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            setDarkMode(savedTheme === 'dark' || (!savedTheme && prefersDark));
+
+            // Theme toggle handler
+            themeToggle.addEventListener('change', function() {
+                setDarkMode(this.checked);
+            });
+
+            // Listen for system theme changes
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+                if (!localStorage.getItem('theme')) {
+                    setDarkMode(e.matches);
+                }
+            });
+        }
+
+        // Initialize dark mode when DOM is loaded
+        document.addEventListener('DOMContentLoaded', initializeDarkMode);
+
+        // Smooth scroll handling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    // Remove active class from all nav links
+                    document.querySelectorAll('.nav-link').forEach(link => {
+                        link.classList.remove('active-nav-link');
+                    });
+                    
+                    // Add active class to clicked link
+                    this.classList.add('active-nav-link');
+
+                    // Smooth scroll to target
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for sections
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '-20% 0px -79% 0px'
+        };
+
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Add visible class for fade-in effect
+                    entry.target.classList.add('visible');
+                    
+                    // Update navigation
+                    const id = entry.target.getAttribute('id');
+                    navLinks.forEach(link => {
+                        link.classList.remove('active-nav-link');
+                        if (link.getAttribute('href') === `#${id}`) {
+                            link.classList.add('active-nav-link');
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        sections.forEach(section => {
+            section.classList.add('section-transition');
+            sectionObserver.observe(section);
+        });
+
+        // Update active nav link on scroll
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', () => {
+            const st = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollDirection = st > lastScrollTop ? 'down' : 'up';
+            lastScrollTop = st <= 0 ? 0 : st;
+
+            // Find the current section
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                if (st >= sectionTop - 200 && st < sectionTop + sectionHeight - 200) {
+                    const id = section.getAttribute('id');
+                    navLinks.forEach(link => {
+                        link.classList.remove('active-nav-link');
+                        if (link.getAttribute('href') === `#${id}`) {
+                            link.classList.add('active-nav-link');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
