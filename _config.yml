@@ -1,0 +1,39 @@
+# GitHub Pages Jekyll Configuration
+# This ensures proper handling of static files
+
+# Exclude files from processing
+exclude:
+  - README.md
+  - .gitignore
+  - .github/
+
+# Include all assets
+include:
+  - assets/
+  - css/
+  - js/
+
+# Plugins (GitHub Pages safe)
+plugins:
+  - jekyll-sitemap
+
+# Site settings
+title: "ToposIQ - Leading AI Solutions in Sri Lanka"
+description: "Comprehensive AI solutions from Sri Lanka. Transforming healthcare, finance, and retail through cutting-edge artificial intelligence technology."
+url: "https://iamramishka.github.io"
+baseurl: "/techstartup"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+
+# Sass settings
+sass:
+  style: compressed
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
