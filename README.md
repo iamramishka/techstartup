@@ -1,44 +1,79 @@
-# ToposIQ Landing Page
+# ToposIQ - AI Technology Company
 
-A modern, responsive landing page for ToposIQ - an AI technology company based in Sri Lanka.
+## Live Website
+🌐 **Website URL**: [https://iamramishka.github.io/techstartup/](https://iamramishka.github.io/techstartup/)
 
-## Features
+## Deployment Status
+✅ Successfully deployed to GitHub Pages using GitHub Actions
 
-- Responsive design that works on all devices
-- Modern UI with smooth animations
-- Contact form integration
-- Service showcase
-- Industry focus sections
-- Team information
-- Contact information
+## About
+ToposIQ is a comprehensive AI solutions company based in Sri Lanka, specializing in:
+- Machine Learning Solutions
+- Computer Vision
+- Natural Language Processing
+- Data Analytics
+- AI Consulting
 
 ## Technologies Used
+- **Frontend**: HTML5, CSS3, JavaScript (Vanilla)
+- **Styling**: Tailwind CSS (CDN), Custom CSS
+- **Libraries**: AOS (Animate on Scroll), Font Awesome Icons
+- **Fonts**: Google Fonts (Poppins)
+- **Deployment**: GitHub Pages with GitHub Actions
 
-- HTML5
-- CSS3 (with Tailwind CSS)
-- JavaScript
-- AOS (Animate on Scroll)
-- Font Awesome Icons
-
-## Setup
-
-1. Clone the repository
-2. Open `index.html` in a web browser
+## Features
+- 📱 Responsive design for all devices
+- 🎨 Modern UI with smooth animations
+- 🖼️ Hero image slideshow
+- 🌙 Dark/Light theme toggle
+- 📧 Contact form (client-side)
+- 🎯 Industry-focused sections
+- ⚡ Fast loading and optimized
 
 ## Project Structure
-
 ```
 main/
+├── .github/
+│   └── workflows/
+│       └── deploy.yml          # GitHub Actions deployment
+├── assets/
+│   └── images/
+│       ├── hero/               # Hero section images
+│       ├── industries/         # Industry showcase images
+│       ├── services/           # Service images
+│       └── team/               # Team background
 ├── css/
-│   └── styles.css
+│   └── styles.css              # Custom styles
 ├── js/
-│   └── main.js
-└── index.html
+│   └── main.js                 # Interactive functionality
+├── index.html                  # Main HTML file
+└── README.md                   # Project documentation
 ```
 
-## Contact
+## Deployment Process
+1. ✅ **Repository Setup**: Initialized Git repository and connected to GitHub
+2. ✅ **Code Push**: All files uploaded to GitHub repository
+3. ✅ **GitHub Actions**: Automated deployment workflow configured
+4. ✅ **GitHub Pages**: Site automatically deployed and accessible
+5. ✅ **Live Website**: Successfully accessible at the GitHub Pages URL
 
-For any inquiries, please contact:
-- Phone: +94 78 43 24 261
-- Email: support@toposiq.space
-- Location: Morawaka, Sri Lanka
+## Performance Optimizations
+- CDN-based libraries for faster loading
+- Optimized images and assets
+- Smooth scroll and intersection observer for better UX
+- Efficient CSS animations
+- Responsive design for mobile performance
+
+## Contact Information
+- 📍 **Location**: Morawaka, Sri Lanka
+- 📞 **Phone**: +94 78 43 24 261
+- 📧 **Email**: support@toposiq.space
+
+## Development
+To run locally:
+1. Clone the repository
+2. Open `index.html` in a web browser
+3. No build process required - it's a static website
+
+## License
+© 2024 ToposIQ. All rights reserved.
